@@ -4,8 +4,8 @@ import colors from '../constants/colors';
 import CustomButton from '../components/CustomButton';
 import { getWalletDetails } from '../services/wallet';
 
-export default function TransactionsScreen({ navigation }) {
-  const [transactions, setTransactions] = useState([]);
+export default function TransactionsScreen({ navigation }: any) {
+  const [transactions, setTransactions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -13,7 +13,7 @@ export default function TransactionsScreen({ navigation }) {
     try {
       const data = await getWalletDetails();
       setTransactions(data.allTransactions || []);
-    } catch (e) {
+    } catch (e: any) {
       Alert.alert('Error', e.response?.data?.message || e.message);
     } finally {
       setLoading(false);
@@ -30,7 +30,7 @@ export default function TransactionsScreen({ navigation }) {
     fetchTransactions();
   };
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item }: any) => (
     <View style={styles.transactionCard}>
       <View style={styles.transactionHeader}>
         <View style={[

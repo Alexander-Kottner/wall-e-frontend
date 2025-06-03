@@ -5,7 +5,7 @@ import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import { requestDebin } from '../services/wallet';
 
-export default function DebinScreen({ navigation }) {
+export default function DebinScreen({ navigation }: any) {
   const [amount, setAmount] = useState('');
 
   const handleDebin = async () => {
@@ -18,7 +18,7 @@ export default function DebinScreen({ navigation }) {
       await requestDebin(value);
       Alert.alert('Success', 'DEBIN requested');
       navigation.goBack();
-    } catch (e) {
+    } catch (e: any) {
       Alert.alert('Error', e.response?.data?.message || e.message);
     }
   };

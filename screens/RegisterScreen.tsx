@@ -5,7 +5,7 @@ import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import { register } from '../services/auth';
 
-export default function RegisterScreen({ navigation }) {
+export default function RegisterScreen({ navigation }: any) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [alias, setAlias] = useState('');
@@ -14,7 +14,7 @@ export default function RegisterScreen({ navigation }) {
     try {
       await register(email, password, alias || undefined);
       navigation.replace('Home');
-    } catch (e) {
+    } catch (e: any) {
       Alert.alert('Registration failed', e.response?.data?.message || e.message);
     }
   };
