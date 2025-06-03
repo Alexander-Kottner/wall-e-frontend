@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet, Alert, ScrollView } from 'react-native';
 import colors from '../constants/colors';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
@@ -25,44 +25,93 @@ export default function TopUpScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Load Balance</Text>
-      <CustomInput
-        placeholder="Amount"
-        value={amount}
-        onChangeText={setAmount}
-        keyboardType="numeric"
-      />
-      <CustomInput
-        placeholder="Source identifier"
-        value={source}
-        onChangeText={setSource}
-      />
-      <CustomButton title="Add" onPress={handleTopup} />
-      <CustomButton
-        title="Cancel"
-        onPress={() => navigation.goBack()}
-        style={styles.link}
-      />
-    </View>
+    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Add Funds</Text>
+        <Text style={styles.subtitle}>Load money to your wallet</Text>
+      </View>
+
+      <View style={styles.form}>
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>Amount</Text>
+          <CustomInput
+            placeholder="0.00"
+            value={amount}
+            onChangeText={setAmount}
+            keyboardType="numeric"
+          />
+        </View>
+
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>Source Identifier</Text>
+          <CustomInput
+            placeholder="Bank account or card"
+            value={source}
+            onChangeText={setSource}
+          />
+        </View>
+
+        <View style={styles.buttonGroup}>
+          <CustomButton 
+            title="Add Funds" 
+            onPress={handleTopup}
+            style={styles.primaryButton}
+          />
+          <CustomButton
+            title="Cancel"
+            onPress={() => navigation.goBack()}
+            variant="outline"
+          />
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
     backgroundColor: colors.background,
+  },
+  contentContainer: {
+    padding: 24,
+    paddingTop: 40,
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: 40,
   },
   title: {
     fontSize: 24,
-    marginBottom: 20,
+    fontWeight: 'bold',
     color: colors.text,
     fontFamily: 'Montserrat_700Bold',
+    marginBottom: 8,
   },
-  link: {
-    backgroundColor: 'transparent',
+  subtitle: {
+    fontSize: 16,
+    color: colors.textSecondary,
+    fontFamily: 'Montserrat_400Regular',
+    textAlign: 'center',
+  },
+  form: {
+    gap: 24,
+  },
+  inputGroup: {
+    gap: 8,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: colors.text,
+    fontFamily: 'Montserrat_700Bold',
+    marginLeft: 4,
+  },
+  buttonGroup: {
+    gap: 12,
+    marginTop: 16,
+  },
+  primaryButton: {
+    marginBottom: 4,
   },
 });

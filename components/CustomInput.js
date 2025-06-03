@@ -2,11 +2,24 @@ import React from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 import colors from '../constants/colors';
 
-export default function CustomInput({ style, ...props }) {
+export default function CustomInput({ style, variant = 'default', ...props }) {
+  const getInputStyle = () => {
+    const baseStyle = [styles.input];
+    
+    switch (variant) {
+      case 'filled':
+        return [...baseStyle, styles.inputFilled, style];
+      case 'underline':
+        return [...baseStyle, styles.inputUnderline, style];
+      default:
+        return [...baseStyle, styles.inputDefault, style];
+    }
+  };
+
   return (
     <TextInput
-      placeholderTextColor={colors.secondary}
-      style={[styles.input, style]}
+      placeholderTextColor={colors.textSecondary}
+      style={getInputStyle()}
       {...props}
     />
   );
@@ -14,14 +27,34 @@ export default function CustomInput({ style, ...props }) {
 
 const styles = StyleSheet.create({
   input: {
-    borderWidth: 1,
-    borderColor: colors.secondary,
-    padding: 10,
-    borderRadius: 4,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderRadius: 8,
     marginVertical: 6,
     width: '100%',
     color: colors.text,
-    backgroundColor: colors.background,
-    fontFamily: 'Montserrat',
+    fontFamily: 'Montserrat_400Regular',
+    fontSize: 16,
+    minHeight: 44,
+  },
+  
+  inputDefault: {
+    backgroundColor: colors.surface,
+    borderWidth: 1.5,
+    borderColor: colors.secondaryDark,
+  },
+  
+  inputFilled: {
+    backgroundColor: colors.surface,
+    borderWidth: 0,
+  },
+  
+  inputUnderline: {
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    borderBottomWidth: 2,
+    borderBottomColor: colors.secondaryDark,
+    borderRadius: 0,
+    paddingHorizontal: 0,
   },
 });

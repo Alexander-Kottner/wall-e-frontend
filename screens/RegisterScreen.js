@@ -21,20 +21,45 @@ export default function RegisterScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Register</Text>
-      <CustomInput placeholder="Email" value={email} onChangeText={setEmail} />
-      <CustomInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <CustomInput
-        placeholder="Alias (optional)"
-        value={alias}
-        onChangeText={setAlias}
-      />
-      <CustomButton title="Register" onPress={handleRegister} />
+      <View style={styles.content}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Create Account</Text>
+          <Text style={styles.subtitle}>Join the WALL-E wallet community</Text>
+        </View>
+
+        <View style={styles.form}>
+          <CustomInput 
+            placeholder="Email" 
+            value={email} 
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <CustomInput
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+          <CustomInput
+            placeholder="Alias (optional)"
+            value={alias}
+            onChangeText={setAlias}
+          />
+          
+          <CustomButton 
+            title="Create Account" 
+            onPress={handleRegister}
+            style={styles.registerButton}
+          />
+          
+          <CustomButton
+            title="Back to Sign In"
+            onPress={() => navigation.goBack()}
+            variant="ghost"
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -42,15 +67,36 @@ export default function RegisterScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
     backgroundColor: colors.background,
   },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 40,
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: 48,
+  },
   title: {
-    fontSize: 24,
-    marginBottom: 20,
+    fontSize: 28,
+    fontWeight: 'bold',
     color: colors.text,
     fontFamily: 'Montserrat_700Bold',
+    marginBottom: 8,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: colors.textSecondary,
+    fontFamily: 'Montserrat_400Regular',
+    textAlign: 'center',
+  },
+  form: {
+    gap: 8,
+  },
+  registerButton: {
+    marginTop: 16,
+    marginBottom: 8,
   },
 });

@@ -20,21 +20,40 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <CustomInput placeholder="Email" value={email} onChangeText={setEmail} />
-      <CustomInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <CustomButton title="Login" onPress={handleLogin} />
-      <CustomButton
-        title="Register"
-        onPress={() => navigation.navigate('Register')}
-        style={styles.link}
-        textStyle={styles.linkText}
-      />
+      <View style={styles.content}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Welcome Back</Text>
+          <Text style={styles.subtitle}>Sign in to your WALL-E wallet</Text>
+        </View>
+
+        <View style={styles.form}>
+          <CustomInput
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <CustomInput
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+
+          <CustomButton
+            title="Sign In"
+            onPress={handleLogin}
+            style={styles.loginButton}
+          />
+
+          <CustomButton
+            title="Create Account"
+            onPress={() => navigation.navigate('Register')}
+            variant="ghost"
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -42,22 +61,36 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
     backgroundColor: colors.background,
   },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 40,
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: 48,
+  },
   title: {
-    fontSize: 24,
-    marginBottom: 20,
+    fontSize: 28,
+    fontWeight: 'bold',
     color: colors.text,
     fontFamily: 'Montserrat_700Bold',
+    marginBottom: 8,
   },
-  link: {
-    backgroundColor: 'transparent',
-  },
-  linkText: {
-    color: colors.secondary,
+  subtitle: {
+    fontSize: 16,
+    color: colors.textSecondary,
     fontFamily: 'Montserrat_400Regular',
+    textAlign: 'center',
+  },
+  form: {
+    gap: 8,
+  },
+  loginButton: {
+    marginTop: 16,
+    marginBottom: 8,
   },
 });
