@@ -31,7 +31,7 @@ export default function TransactionsScreen({ navigation }: any) {
   };
 
   const renderItem = ({ item }: any) => (
-    <View style={styles.transactionCard}>
+    <View style={styles.transactionCard} testID="transaction-item">
       <View style={styles.transactionHeader}>
         <View style={[
           styles.transactionIndicator,
@@ -87,6 +87,7 @@ export default function TransactionsScreen({ navigation }: any) {
         renderItem={renderItem}
         ListEmptyComponent={renderEmpty}
         contentContainerStyle={styles.listContainer}
+        testID="transactions-list"
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
@@ -99,11 +100,12 @@ export default function TransactionsScreen({ navigation }: any) {
       />
 
       <View style={styles.footer}>
-        <CustomButton 
-          title="Back to Home" 
+        <CustomButton
+          title="Back to Home"
           onPress={() => navigation.goBack()}
           variant="outline"
           size="medium"
+          testID="transactions-back"
         />
       </View>
     </View>

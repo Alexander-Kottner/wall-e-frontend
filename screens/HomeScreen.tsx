@@ -38,12 +38,13 @@ export default function HomeScreen({ navigation }: any) {
       {/* Balance Section */}
       <View style={styles.balanceCard}>
         <Text style={styles.balanceLabel}>Current Balance</Text>
-        <Text style={styles.balance}>{balance !== null ? `$${balance}` : '...'}</Text>
-        <CustomButton 
-          title="Refresh" 
-          onPress={fetchBalance} 
-          variant="ghost" 
+        <Text style={styles.balance} testID="home-balance">{balance !== null ? `$${balance}` : '...'}</Text>
+        <CustomButton
+          title="Refresh"
+          onPress={fetchBalance}
+          variant="ghost"
           size="small"
+          testID="home-refresh"
         />
       </View>
 
@@ -57,6 +58,7 @@ export default function HomeScreen({ navigation }: any) {
               onPress={() => navigation.navigate('Transfer')}
               style={styles.fullWidthButton}
               size="medium"
+              testID="home-send-money"
             />
           </View>
           <View style={styles.buttonRow}>
@@ -73,6 +75,7 @@ export default function HomeScreen({ navigation }: any) {
               variant="outline"
               style={styles.gridButton}
               size="medium"
+              testID="home-view-history"
             />
           </View>
         </View>
@@ -80,11 +83,12 @@ export default function HomeScreen({ navigation }: any) {
 
       {/* Settings */}
       <View style={styles.section}>
-        <CustomButton 
-          title="Logout" 
-          onPress={handleLogout} 
+        <CustomButton
+          title="Logout"
+          onPress={handleLogout}
           variant="ghost"
           size="small"
+          testID="home-logout"
         />
       </View>
     </ScrollView>
