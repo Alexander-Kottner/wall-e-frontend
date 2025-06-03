@@ -2,7 +2,12 @@ import React from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 import colors from '../constants/colors';
 
-export default function CustomInput({ style, variant = 'default', ...props }) {
+export interface CustomInputProps {
+  style?: any;
+  variant?: 'default' | 'filled' | 'underline';
+  [x: string]: any;
+}
+export default function CustomInput({ style, variant = 'default', ...props }: CustomInputProps) {
   const getInputStyle = () => {
     const baseStyle = [styles.input];
     

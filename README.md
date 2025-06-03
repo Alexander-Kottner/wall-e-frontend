@@ -1,6 +1,6 @@
 # Wall-E Frontend
 
-Cross-platform mobile and web app built with React Native and Expo.
+Cross-platform mobile and web app built with React Native, Expo and TypeScript.
 
 ## Development
 

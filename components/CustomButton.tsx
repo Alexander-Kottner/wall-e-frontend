@@ -2,9 +2,24 @@ import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import colors from '../constants/colors';
 
-export default function CustomButton({ title, onPress, style, textStyle, variant = 'primary', size = 'medium' }) {
+export interface CustomButtonProps {
+  title: string;
+  onPress: () => void | Promise<void>;
+  style?: any;
+  textStyle?: any;
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'small' | 'medium' | 'large';
+}
+export default function CustomButton({
+  title,
+  onPress,
+  style,
+  textStyle,
+  variant = 'primary',
+  size = 'medium',
+}: CustomButtonProps) {
   const getButtonStyle = () => {
-    const baseStyle = [styles.button, styles[`button_${size}`]];
+    const baseStyle = [styles.button, (styles as any)[`button_${size}`]];
     
     switch (variant) {
       case 'secondary':
@@ -19,7 +34,7 @@ export default function CustomButton({ title, onPress, style, textStyle, variant
   };
 
   const getTextStyle = () => {
-    const baseTextStyle = [styles.buttonText, styles[`buttonText_${size}`]];
+    const baseTextStyle = [styles.buttonText, (styles as any)[`buttonText_${size}`]];
     
     switch (variant) {
       case 'secondary':

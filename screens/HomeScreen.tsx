@@ -6,14 +6,14 @@ import CustomButton from '../components/CustomButton';
 import { getBalance } from '../services/wallet';
 import { logout } from '../services/auth';
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen({ navigation }: any) {
   const [balance, setBalance] = useState(null);
 
   const fetchBalance = useCallback(async () => {
     try {
       const data = await getBalance();
       setBalance(data.balance);
-    } catch (e) {
+    } catch (e: any) {
       Alert.alert('Error', e.response?.data?.message || e.message);
     }
   }, []);
@@ -28,7 +28,7 @@ export default function HomeScreen({ navigation }) {
     try {
       await logout();
       navigation.replace('Login');
-    } catch (e) {
+    } catch (e: any) {
       Alert.alert('Logout failed', e.response?.data?.message || e.message);
     }
   };

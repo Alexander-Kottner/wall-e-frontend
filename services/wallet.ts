@@ -5,7 +5,7 @@ export const getBalance = async () => {
   return res.data;
 };
 
-export const requestDebin = async (amount) => {
+export const requestDebin = async (amount: number) => {
   const res = await api.post('/wallet/topup/debin', { amount });
   return res.data;
 };

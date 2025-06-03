@@ -1,6 +1,6 @@
 import api from './api';
 
-export const p2pTransfer = async (recipientIdentifier, amount) => {
+export const p2pTransfer = async (recipientIdentifier: string, amount: number) => {
   const res = await api.post('/transactions/p2p', {
     recipientIdentifier,
     amount,

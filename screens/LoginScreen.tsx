@@ -5,7 +5,7 @@ import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import { login } from '../services/auth';
 
-export default function LoginScreen({ navigation }) {
+export default function LoginScreen({ navigation }: any) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,7 +13,7 @@ export default function LoginScreen({ navigation }) {
     try {
       await login(email, password);
       navigation.replace('Home');
-    } catch (e) {
+    } catch (e: any) {
       Alert.alert('Login failed', e.response?.data?.message || e.message);
     }
   };

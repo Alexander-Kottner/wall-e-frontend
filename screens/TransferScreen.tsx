@@ -5,7 +5,7 @@ import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import { p2pTransfer } from '../services/transactions';
 
-export default function TransferScreen({ navigation }) {
+export default function TransferScreen({ navigation }: any) {
   const [recipient, setRecipient] = useState('');
   const [amount, setAmount] = useState('');
 
@@ -19,7 +19,7 @@ export default function TransferScreen({ navigation }) {
       await p2pTransfer(recipient, value);
       Alert.alert('Success', 'Transfer completed');
       navigation.goBack();
-    } catch (e) {
+    } catch (e: any) {
       Alert.alert('Error', e.response?.data?.message || e.message);
     }
   };
