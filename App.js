@@ -8,7 +8,6 @@ import RegisterScreen from './screens/RegisterScreen';
 import HomeScreen from './screens/HomeScreen';
 import TransactionsScreen from './screens/TransactionsScreen';
 import TransferScreen from './screens/TransferScreen';
-import TopUpScreen from './screens/TopUpScreen';
 import DebinScreen from './screens/DebinScreen';
 
 const Stack = createNativeStackNavigator();
@@ -38,7 +37,6 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Transactions" component={TransactionsScreen} />
         <Stack.Screen name="Transfer" component={TransferScreen} />
-        <Stack.Screen name="TopUp" component={TopUpScreen} />
         <Stack.Screen name="Debin" component={DebinScreen} />
       </Stack.Navigator>
     </NavigationContainer>

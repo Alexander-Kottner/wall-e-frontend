@@ -52,14 +52,7 @@ export default function HomeScreen({ navigation }) {
             <CustomButton
               title="Send Money"
               onPress={() => navigation.navigate('Transfer')}
-              style={styles.gridButton}
-              size="medium"
-            />
-            <CustomButton
-              title="Top Up"
-              onPress={() => navigation.navigate('TopUp')}
-              variant="secondary"
-              style={styles.gridButton}
+              style={styles.fullWidthButton}
               size="medium"
             />
           </View>
@@ -148,5 +141,9 @@ const styles = StyleSheet.create({
   },
   gridButton: {
     flex: 1,
+  },
+  fullWidthButton: {
+    flex: 1,
+    width: '100%',
   },
 });
