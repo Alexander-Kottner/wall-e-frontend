@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, Alert } from 'react-native';
+import colors from '../constants/colors';
 import CustomButton from '../components/CustomButton';
 import { getWalletDetails } from '../services/wallet';
 
@@ -59,11 +60,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    backgroundColor: colors.background,
   },
   title: {
     fontSize: 24,
     marginBottom: 10,
     textAlign: 'center',
+    color: colors.text,
+    fontFamily: 'Montserrat_700Bold',
   },
   item: {
     padding: 12,
@@ -78,13 +82,18 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 12,
-    color: '#555',
+    color: colors.secondary,
+    fontFamily: 'Montserrat_400Regular',
   },
   desc: {
     fontSize: 16,
+    color: colors.text,
+    fontFamily: 'Montserrat_400Regular',
   },
   amount: {
     fontWeight: 'bold',
     textAlign: 'right',
+    color: colors.text,
+    fontFamily: 'Montserrat_700Bold',
   },
 });
