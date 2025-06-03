@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { View, Text, StyleSheet, Alert, ScrollView } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import colors from '../constants/colors';
 import CustomButton from '../components/CustomButton';
 import { getBalance } from '../services/wallet';
@@ -8,18 +9,22 @@ import { logout } from '../services/auth';
 export default function HomeScreen({ navigation }) {
   const [balance, setBalance] = useState(null);
 
-  const fetchBalance = async () => {
+  const fetchBalance = useCallback(async () => {
     try {
       const data = await getBalance();
       setBalance(data.balance);
     } catch (e) {
       Alert.alert('Error', e.response?.data?.message || e.message);
     }
-  };
-
-  useEffect(() => {
-    fetchBalance();
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchBalance();
+      const interval = setInterval(fetchBalance, 10000);
+      return () => clearInterval(interval);
+    }, [fetchBalance])
+  );
 
   const handleLogout = async () => {
     try {
