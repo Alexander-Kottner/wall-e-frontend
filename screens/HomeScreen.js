@@ -21,8 +21,6 @@ export default function HomeScreen({ navigation }) {
   useFocusEffect(
     useCallback(() => {
       fetchBalance();
-      const interval = setInterval(fetchBalance, 10000);
-      return () => clearInterval(interval);
     }, [fetchBalance])
   );
 
