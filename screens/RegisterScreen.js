@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
+import colors from '../constants/colors';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import { register } from '../services/auth';
@@ -44,9 +45,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: colors.background,
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
+    color: colors.text,
+    fontFamily: 'Montserrat_700Bold',
   },
 });

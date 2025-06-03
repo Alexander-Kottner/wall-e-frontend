@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
+import colors from '../constants/colors';
 import CustomButton from '../components/CustomButton';
 import { getBalance } from '../services/wallet';
 import { logout } from '../services/auth';
@@ -45,13 +46,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: colors.background,
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
+    color: colors.text,
+    fontFamily: 'Montserrat_700Bold',
   },
   balance: {
     fontSize: 32,
     marginBottom: 20,
+    color: colors.primary,
+    fontFamily: 'Montserrat_400Regular',
   },
 });
