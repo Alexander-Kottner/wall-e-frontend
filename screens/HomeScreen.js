@@ -35,6 +35,16 @@ export default function HomeScreen({ navigation }) {
       <Text style={styles.title}>Wallet Balance</Text>
       <Text style={styles.balance}>{balance !== null ? `$${balance}` : '...'}</Text>
       <CustomButton title="Refresh" onPress={fetchBalance} />
+      <CustomButton
+        title="View History"
+        onPress={() => navigation.navigate('Transactions')}
+      />
+      <CustomButton
+        title="Send Money"
+        onPress={() => navigation.navigate('Transfer')}
+      />
+      <CustomButton title="Top Up" onPress={() => navigation.navigate('TopUp')} />
+      <CustomButton title="Request DEBIN" onPress={() => navigation.navigate('Debin')} />
       <CustomButton title="Logout" onPress={handleLogout} />
     </View>
   );
