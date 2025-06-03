@@ -38,7 +38,7 @@ export default function HomeScreen({ navigation }: any) {
       {/* Balance Section */}
       <View style={styles.balanceCard}>
         <Text style={styles.balanceLabel}>Current Balance</Text>
-        <Text style={styles.balance}>{balance !== null ? `$${balance}` : '...'}</Text>
+        <Text style={styles.balance} testID="home-balance-text">{balance !== null ? `$${balance}` : '...'}</Text>
         <CustomButton 
           title="Refresh" 
           onPress={fetchBalance} 
@@ -57,6 +57,7 @@ export default function HomeScreen({ navigation }: any) {
               onPress={() => navigation.navigate('Transfer')}
               style={styles.fullWidthButton}
               size="medium"
+              testID="home-send-money-button"
             />
           </View>
           <View style={styles.buttonRow}>
@@ -73,6 +74,7 @@ export default function HomeScreen({ navigation }: any) {
               variant="outline"
               style={styles.gridButton}
               size="medium"
+              testID="home-view-history-button"
             />
           </View>
         </View>

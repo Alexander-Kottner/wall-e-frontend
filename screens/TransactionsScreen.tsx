@@ -87,6 +87,7 @@ export default function TransactionsScreen({ navigation }: any) {
         renderItem={renderItem}
         ListEmptyComponent={renderEmpty}
         contentContainerStyle={styles.listContainer}
+        testID="transactions-list"
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
