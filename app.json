@@ -4,11 +4,11 @@
     "slug": "wall-e-frontend",
     "version": "1.0.0",
     "orientation": "portrait",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": {
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#2F2F2F"
     },
     "ios": {
       "supportsTablet": true

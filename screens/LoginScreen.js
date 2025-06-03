@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
+import colors from '../constants/colors';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import { login } from '../services/auth';
@@ -32,6 +33,7 @@ export default function LoginScreen({ navigation }) {
         title="Register"
         onPress={() => navigation.navigate('Register')}
         style={styles.link}
+        textStyle={styles.linkText}
       />
     </View>
   );
@@ -43,12 +45,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: colors.background,
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
+    color: colors.text,
+    fontFamily: 'Montserrat_700Bold',
   },
   link: {
     backgroundColor: 'transparent',
+  },
+  linkText: {
+    color: colors.secondary,
+    fontFamily: 'Montserrat_400Regular',
   },
 });
