@@ -5,7 +5,7 @@ export function showError(message: string, title = 'Error') {
     type: 'error',
     text1: title,
     text2: message,
-    position: 'bottom',
+    position: 'top',
   });
 }
 
