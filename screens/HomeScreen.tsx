@@ -37,54 +37,56 @@ export default function HomeScreen({ navigation }: any) {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-      {/* Balance Section */}
-      <View style={styles.balanceCard}>
-        <Text style={styles.balanceLabel}>Current Balance</Text>
-        <Text style={styles.balance}>{balance !== null ? `$${balance}` : '...'}</Text>
-        <CustomButton 
-          title="Refresh" 
-          onPress={fetchBalance} 
-          variant="ghost" 
-          size="small"
-        />
-      </View>
+      <View>
+        {/* Balance Section */}
+        <View style={styles.balanceCard}>
+          <Text style={styles.balanceLabel}>Current Balance</Text>
+          <Text style={styles.balance}>{balance !== null ? `$${balance}` : '...'}</Text>
+          <CustomButton
+            title="Refresh"
+            onPress={fetchBalance}
+            variant="ghost"
+            size="small"
+          />
+        </View>
 
-      {/* Quick Actions */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Quick Actions</Text>
-        <View style={styles.buttonGrid}>
-          <View style={styles.buttonRow}>
-            <CustomButton
-              title="Send Money"
-              onPress={() => navigation.navigate('Transfer')}
-              style={styles.fullWidthButton}
-              size="medium"
-            />
-          </View>
-          <View style={styles.buttonRow}>
-            <CustomButton
-              title="Request DEBIN"
-              onPress={() => navigation.navigate('Debin')}
-              variant="outline"
-              style={styles.gridButton}
-              size="medium"
-            />
-            <CustomButton
-              title="View History"
-              onPress={() => navigation.navigate('Transactions')}
-              variant="outline"
-              style={styles.gridButton}
-              size="medium"
-            />
+        {/* Quick Actions */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Quick Actions</Text>
+          <View style={styles.buttonGrid}>
+            <View style={styles.buttonRow}>
+              <CustomButton
+                title="Send Money"
+                onPress={() => navigation.navigate('Transfer')}
+                style={styles.fullWidthButton}
+                size="medium"
+              />
+            </View>
+            <View style={styles.buttonRow}>
+              <CustomButton
+                title="Request DEBIN"
+                onPress={() => navigation.navigate('Debin')}
+                variant="outline"
+                style={styles.gridButton}
+                size="medium"
+              />
+              <CustomButton
+                title="View History"
+                onPress={() => navigation.navigate('Transactions')}
+                variant="outline"
+                style={styles.gridButton}
+                size="medium"
+              />
+            </View>
           </View>
         </View>
       </View>
 
-      {/* Settings */}
-      <View style={styles.section}>
-        <CustomButton 
-          title="Logout" 
-          onPress={handleLogout} 
+      {/* Logout */}
+      <View style={styles.logoutSection}>
+        <CustomButton
+          title="Logout"
+          onPress={handleLogout}
           variant="ghost"
           size="small"
         />
@@ -101,6 +103,8 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: 20,
     paddingBottom: 40,
+    flexGrow: 1,
+    justifyContent: 'space-between',
   },
   balanceCard: {
     backgroundColor: colors.surface,
@@ -150,5 +154,8 @@ const styles = StyleSheet.create({
   fullWidthButton: {
     flex: 1,
     width: '100%',
+  },
+  logoutSection: {
+    paddingVertical: 16,
   },
 });
