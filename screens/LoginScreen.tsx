@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { showError } from '../utils/errors';
+import { showError, showSuccess } from '../utils/errors';
 import colors from '../constants/colors';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
@@ -13,7 +13,8 @@ export default function LoginScreen({ navigation }: any) {
   const handleLogin = async () => {
     try {
       await login(email, password);
-      navigation.replace('Main');
+      showSuccess('Logged in');
+      navigation.replace('Home');
     } catch (e: any) {
       showError(e.response?.data?.message || e.message, 'Login failed');
     }

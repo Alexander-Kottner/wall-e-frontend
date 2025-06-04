@@ -17,7 +17,7 @@ export default function DebinScreen({ navigation }: any) {
     }
     try {
       await requestDebin(value);
-      showSuccess('DEBIN requested');
+      showSuccess('DEBIN received');
       navigation.goBack();
     } catch (e: any) {
       showError(e.response?.data?.message || e.message);
