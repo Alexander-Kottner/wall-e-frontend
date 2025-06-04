@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { View, Text, FlatList, StyleSheet, RefreshControl } from 'react-native';
 import { showError } from '../utils/errors';
 import colors from '../constants/colors';
@@ -10,7 +11,7 @@ export default function TransactionsScreen({ navigation }: any) {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
-  const fetchTransactions = async () => {
+  const fetchTransactions = useCallback(async () => {
     try {
       const data = await getWalletDetails();
       setTransactions(data.allTransactions || []);
@@ -20,11 +21,13 @@ export default function TransactionsScreen({ navigation }: any) {
       setLoading(false);
       setRefreshing(false);
     }
-  };
-
-  useEffect(() => {
-    fetchTransactions();
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchTransactions();
+    }, [fetchTransactions])
+  );
 
   const onRefresh = () => {
     setRefreshing(true);
