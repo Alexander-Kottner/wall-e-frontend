@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { showError } from '../utils/errors';
 import colors from '../constants/colors';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
@@ -15,7 +16,10 @@ export default function RegisterScreen({ navigation }: any) {
       await register(email, password, alias || undefined);
       navigation.replace('Home');
     } catch (e: any) {
-      Alert.alert('Registration failed', e.response?.data?.message || e.message);
+      showError(
+        e.response?.data?.message || e.message,
+        'Registration failed'
+      );
     }
   };
 

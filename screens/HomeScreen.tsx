@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
-import { View, Text, StyleSheet, Alert, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { showError } from '../utils/errors';
 import { useFocusEffect } from '@react-navigation/native';
 import colors from '../constants/colors';
 import CustomButton from '../components/CustomButton';
@@ -14,7 +15,7 @@ export default function HomeScreen({ navigation }: any) {
       const data = await getBalance();
       setBalance(data.balance);
     } catch (e: any) {
-      Alert.alert('Error', e.response?.data?.message || e.message);
+      showError(e.response?.data?.message || e.message);
     }
   }, []);
 
@@ -29,7 +30,7 @@ export default function HomeScreen({ navigation }: any) {
       await logout();
       navigation.replace('Login');
     } catch (e: any) {
-      Alert.alert('Logout failed', e.response?.data?.message || e.message);
+      showError(e.response?.data?.message || e.message, 'Logout failed');
     }
   };
 
