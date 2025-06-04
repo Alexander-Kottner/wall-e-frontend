@@ -2,6 +2,7 @@ import React from 'react';
 import { useFonts, Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Toast from 'react-native-toast-message';
 import { toastConfig } from './utils/toastConfig';
 import colors from './constants/colors';
@@ -13,6 +14,27 @@ import TransferScreen from './screens/TransferScreen';
 import DebinScreen from './screens/DebinScreen';
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function MainTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: colors.background },
+        headerTintColor: colors.text,
+        headerTitleStyle: { fontFamily: 'Montserrat_700Bold' },
+        tabBarStyle: { backgroundColor: colors.surface },
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.textSecondary,
+      }}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Transfer" component={TransferScreen} />
+      <Tab.Screen name="Debin" component={DebinScreen} />
+      <Tab.Screen name="Transactions" component={TransactionsScreen} />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -36,10 +58,7 @@ export default function App() {
       >
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Transactions" component={TransactionsScreen} />
-        <Stack.Screen name="Transfer" component={TransferScreen} />
-        <Stack.Screen name="Debin" component={DebinScreen} />
+        <Stack.Screen name="Main" component={MainTabs} options={{ headerShown: false }} />
       </Stack.Navigator>
       <Toast config={toastConfig} />
     </NavigationContainer>

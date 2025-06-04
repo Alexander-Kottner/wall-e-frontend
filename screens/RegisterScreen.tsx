@@ -14,7 +14,7 @@ export default function RegisterScreen({ navigation }: any) {
   const handleRegister = async () => {
     try {
       await register(email, password, alias || undefined);
-      navigation.replace('Home');
+      navigation.replace('Main');
     } catch (e: any) {
       showError(
         e.response?.data?.message || e.message,
