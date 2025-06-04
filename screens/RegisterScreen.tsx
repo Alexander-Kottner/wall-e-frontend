@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { showError } from '../utils/errors';
+import { showError, showSuccess } from '../utils/errors';
 import colors from '../constants/colors';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
@@ -14,6 +14,7 @@ export default function RegisterScreen({ navigation }: any) {
   const handleRegister = async () => {
     try {
       await register(email, password, alias || undefined);
+      showSuccess('Account created');
       navigation.replace('Home');
     } catch (e: any) {
       showError(

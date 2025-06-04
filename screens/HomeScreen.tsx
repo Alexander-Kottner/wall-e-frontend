@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { showError } from '../utils/errors';
+import { showError, showSuccess } from '../utils/errors';
 import { useFocusEffect } from '@react-navigation/native';
 import colors from '../constants/colors';
 import CustomButton from '../components/CustomButton';
@@ -28,6 +28,7 @@ export default function HomeScreen({ navigation }: any) {
   const handleLogout = async () => {
     try {
       await logout();
+      showSuccess('Logged out');
       navigation.replace('Login');
     } catch (e: any) {
       showError(e.response?.data?.message || e.message, 'Logout failed');

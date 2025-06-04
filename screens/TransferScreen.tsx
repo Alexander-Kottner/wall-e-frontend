@@ -18,7 +18,7 @@ export default function TransferScreen({ navigation }: any) {
     }
     try {
       await p2pTransfer(recipient, value);
-      showSuccess('Transfer completed');
+      showSuccess('Money sent');
       navigation.goBack();
     } catch (e: any) {
       showError(e.response?.data?.message || e.message);
