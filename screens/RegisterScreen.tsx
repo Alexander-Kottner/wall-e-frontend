@@ -15,7 +15,7 @@ export default function RegisterScreen({ navigation }: any) {
     try {
       await register(email, password, alias || undefined);
       showSuccess('Account created');
-      navigation.replace('Home');
+      navigation.replace('Main');
     } catch (e: any) {
       showError(
         e.response?.data?.message || e.message,
