@@ -33,35 +33,40 @@ export default function RegisterScreen({ navigation }: any) {
         </View>
 
         <View style={styles.form}>
-          <CustomInput 
-            placeholder="Email" 
-            value={email} 
+          <CustomInput
+            placeholder="Email"
+            value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
+            testID="register-email"
           />
           <CustomInput
             placeholder="Password"
             value={password}
             onChangeText={setPassword}
             secureTextEntry
+            testID="register-password"
           />
           <CustomInput
             placeholder="Alias (optional)"
             value={alias}
             onChangeText={setAlias}
+            testID="register-alias"
           />
           
-          <CustomButton 
-            title="Create Account" 
+          <CustomButton
+            title="Create Account"
             onPress={handleRegister}
             style={styles.registerButton}
+            testID="register-submit"
           />
           
           <CustomButton
             title="Back to Sign In"
             onPress={() => navigation.goBack()}
             variant="ghost"
+            testID="goto-login"
           />
         </View>
       </View>
