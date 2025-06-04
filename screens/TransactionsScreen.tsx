@@ -35,7 +35,7 @@ export default function TransactionsScreen({ navigation }: any) {
   };
 
   const renderItem = ({ item }: any) => (
-    <View style={styles.transactionCard}>
+    <View style={styles.transactionCard} testID="transaction-item">
       <View style={styles.transactionHeader}>
         <View style={[
           styles.transactionIndicator,
@@ -86,6 +86,7 @@ export default function TransactionsScreen({ navigation }: any) {
       </View>
 
       <FlatList
+        testID="transactions-list"
         data={transactions}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
@@ -105,6 +106,7 @@ export default function TransactionsScreen({ navigation }: any) {
       <View style={styles.footer}>
         <CustomButton 
           title="Back to Home" 
+          testID="back-home"
           onPress={() => navigation.goBack()}
           variant="outline"
           size="medium"

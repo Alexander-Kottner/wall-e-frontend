@@ -9,6 +9,7 @@ export interface CustomButtonProps {
   textStyle?: any;
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'small' | 'medium' | 'large';
+  testID?: string;
 }
 export default function CustomButton({
   title,
@@ -17,6 +18,7 @@ export default function CustomButton({
   textStyle,
   variant = 'primary',
   size = 'medium',
+  testID,
 }: CustomButtonProps) {
   const getButtonStyle = () => {
     const baseStyle = [styles.button, (styles as any)[`button_${size}`]];
@@ -50,6 +52,7 @@ export default function CustomButton({
 
   return (
     <TouchableOpacity
+      testID={testID}
       onPress={onPress}
       style={getButtonStyle()}
       activeOpacity={0.8}

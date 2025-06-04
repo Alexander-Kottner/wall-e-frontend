@@ -35,24 +35,28 @@ export default function LoginScreen({ navigation }: any) {
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
+            testID="login-email"
           />
           <CustomInput
             placeholder="Password"
             value={password}
             onChangeText={setPassword}
             secureTextEntry
+            testID="login-password"
           />
 
           <CustomButton
             title="Sign In"
             onPress={handleLogin}
             style={styles.loginButton}
+            testID="login-submit"
           />
 
           <CustomButton
             title="Create Account"
             onPress={() => navigation.navigate('Register')}
             variant="ghost"
+            testID="goto-register"
           />
         </View>
       </View>
