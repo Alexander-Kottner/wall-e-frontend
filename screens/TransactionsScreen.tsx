@@ -103,11 +103,12 @@ export default function TransactionsScreen({ navigation }: any) {
       />
 
       <View style={styles.footer}>
-        <CustomButton 
-          title="Back to Home" 
+        <CustomButton
+          title="Back to Home"
           onPress={() => navigation.goBack()}
           variant="outline"
           size="medium"
+          testID="transactions-back-button"
         />
       </View>
     </View>

@@ -47,6 +47,7 @@ export default function HomeScreen({ navigation }: any) {
             onPress={fetchBalance}
             variant="ghost"
             size="small"
+            testID="home-refresh-balance-button"
           />
         </View>
 
@@ -60,6 +61,7 @@ export default function HomeScreen({ navigation }: any) {
                 onPress={() => navigation.navigate('Transfer')}
                 style={styles.fullWidthButton}
                 size="medium"
+                testID="home-send-money-button"
               />
             </View>
             <View style={styles.buttonRow}>
@@ -76,6 +78,7 @@ export default function HomeScreen({ navigation }: any) {
                 variant="outline"
                 style={styles.gridButton}
                 size="medium"
+                testID="home-view-history-button"
               />
             </View>
           </View>
@@ -89,6 +92,7 @@ export default function HomeScreen({ navigation }: any) {
           onPress={handleLogout}
           variant="ghost"
           size="small"
+          testID="home-logout-button"
         />
       </View>
     </ScrollView>

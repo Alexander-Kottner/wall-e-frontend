@@ -5,9 +5,10 @@ import colors from '../constants/colors';
 export interface CustomInputProps {
   style?: any;
   variant?: 'default' | 'filled' | 'underline';
+  testID?: string;
   [x: string]: any;
 }
-export default function CustomInput({ style, variant = 'default', ...props }: CustomInputProps) {
+export default function CustomInput({ style, variant = 'default', testID, ...props }: CustomInputProps) {
   const getInputStyle = () => {
     const baseStyle = [styles.input];
     
@@ -25,6 +26,7 @@ export default function CustomInput({ style, variant = 'default', ...props }: Cu
     <TextInput
       placeholderTextColor={colors.textSecondary}
       style={getInputStyle()}
+      testID={testID}
       {...props}
     />
   );

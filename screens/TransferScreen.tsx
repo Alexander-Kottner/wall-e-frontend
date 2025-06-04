@@ -40,6 +40,7 @@ export default function TransferScreen({ navigation }: any) {
             value={recipient}
             onChangeText={setRecipient}
             autoCapitalize="none"
+            testID="transfer-recipient-input"
           />
         </View>
 
@@ -50,19 +51,22 @@ export default function TransferScreen({ navigation }: any) {
             value={amount}
             onChangeText={setAmount}
             keyboardType="numeric"
+            testID="transfer-amount-input"
           />
         </View>
 
         <View style={styles.buttonGroup}>
-          <CustomButton 
-            title="Send Money" 
+          <CustomButton
+            title="Send Money"
             onPress={handleTransfer}
             style={styles.primaryButton}
+            testID="transfer-submit-button"
           />
           <CustomButton
             title="Cancel"
             onPress={() => navigation.goBack()}
             variant="outline"
+            testID="transfer-cancel-button"
           />
         </View>
       </View>
