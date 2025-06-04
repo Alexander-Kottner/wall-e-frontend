@@ -14,7 +14,7 @@ export default function LoginScreen({ navigation }: any) {
     try {
       await login(email, password);
       showSuccess('Logged in');
-      navigation.replace('Home');
+      navigation.replace('Main');
     } catch (e: any) {
       showError(e.response?.data?.message || e.message, 'Login failed');
     }

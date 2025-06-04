@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import React, { useCallback, useState, useLayoutEffect } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { showError, showSuccess } from '../utils/errors';
 import { useFocusEffect } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../constants/colors';
 import CustomButton from '../components/CustomButton';
 import { getBalance } from '../services/wallet';
@@ -34,6 +35,24 @@ export default function HomeScreen({ navigation }: any) {
       showError(e.response?.data?.message || e.message, 'Logout failed');
     }
   };
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={handleLogout}
+          style={styles.logoutButton}
+          activeOpacity={0.7}
+        >
+          <MaterialCommunityIcons 
+            name="logout" 
+            size={24} 
+            color={colors.secondary} 
+          />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation, handleLogout]);
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -81,16 +100,6 @@ export default function HomeScreen({ navigation }: any) {
           </View>
         </View>
       </View>
-
-      {/* Logout */}
-      <View style={styles.logoutSection}>
-        <CustomButton
-          title="Logout"
-          onPress={handleLogout}
-          variant="ghost"
-          size="small"
-        />
-      </View>
     </ScrollView>
   );
 }
@@ -104,7 +113,10 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingBottom: 40,
     flexGrow: 1,
-    justifyContent: 'space-between',
+  },
+  logoutButton: {
+    padding: 8,
+    marginRight: 8,
   },
   balanceCard: {
     backgroundColor: colors.surface,
@@ -154,8 +166,5 @@ const styles = StyleSheet.create({
   fullWidthButton: {
     flex: 1,
     width: '100%',
-  },
-  logoutSection: {
-    paddingVertical: 16,
   },
 });
