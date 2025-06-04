@@ -3,6 +3,7 @@ import { useFonts, Montserrat_400Regular, Montserrat_700Bold } from '@expo-googl
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Toast from 'react-native-toast-message';
+import { toastConfig } from './utils/toastConfig';
 import colors from './constants/colors';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -40,7 +41,7 @@ export default function App() {
         <Stack.Screen name="Transfer" component={TransferScreen} />
         <Stack.Screen name="Debin" component={DebinScreen} />
       </Stack.Navigator>
-      <Toast />
+      <Toast config={toastConfig} />
     </NavigationContainer>
   );
 }
