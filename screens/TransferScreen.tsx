@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { showError, showSuccess } from '../utils/errors';
 import colors from '../constants/colors';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
@@ -12,15 +13,15 @@ export default function TransferScreen({ navigation }: any) {
   const handleTransfer = async () => {
     const value = parseFloat(amount);
     if (!recipient || !value) {
-      Alert.alert('Error', 'Please enter recipient and amount');
+      showError('Please enter recipient and amount');
       return;
     }
     try {
       await p2pTransfer(recipient, value);
-      Alert.alert('Success', 'Transfer completed');
+      showSuccess('Transfer completed');
       navigation.goBack();
     } catch (e: any) {
-      Alert.alert('Error', e.response?.data?.message || e.message);
+      showError(e.response?.data?.message || e.message);
     }
   };
 

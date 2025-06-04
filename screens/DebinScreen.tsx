@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { showError, showSuccess } from '../utils/errors';
 import colors from '../constants/colors';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
@@ -11,15 +12,15 @@ export default function DebinScreen({ navigation }: any) {
   const handleDebin = async () => {
     const value = parseFloat(amount);
     if (!value) {
-      Alert.alert('Error', 'Enter a valid amount');
+      showError('Enter a valid amount');
       return;
     }
     try {
       await requestDebin(value);
-      Alert.alert('Success', 'DEBIN requested');
+      showSuccess('DEBIN requested');
       navigation.goBack();
     } catch (e: any) {
-      Alert.alert('Error', e.response?.data?.message || e.message);
+      showError(e.response?.data?.message || e.message);
     }
   };
 

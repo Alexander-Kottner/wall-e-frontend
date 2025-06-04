@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Alert, RefreshControl } from 'react-native';
+import { View, Text, FlatList, StyleSheet, RefreshControl } from 'react-native';
+import { showError } from '../utils/errors';
 import colors from '../constants/colors';
 import CustomButton from '../components/CustomButton';
 import { getWalletDetails } from '../services/wallet';
@@ -14,7 +15,7 @@ export default function TransactionsScreen({ navigation }: any) {
       const data = await getWalletDetails();
       setTransactions(data.allTransactions || []);
     } catch (e: any) {
-      Alert.alert('Error', e.response?.data?.message || e.message);
+      showError(e.response?.data?.message || e.message);
     } finally {
       setLoading(false);
       setRefreshing(false);
