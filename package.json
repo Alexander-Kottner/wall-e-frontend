@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test:e2e": "cypress run --browser chrome --headless=new"
+    "test:e2e": "cypress run --browser chrome --headless"
   },
   "dependencies": {
     "@expo-google-fonts/montserrat": "^0.3.0",
