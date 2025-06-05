@@ -39,6 +39,7 @@ export default function DebinScreen({ navigation }: any) {
             value={amount}
             onChangeText={setAmount}
             keyboardType="numeric"
+            testID="debin-amount"
           />
         </View>
 
@@ -47,6 +48,7 @@ export default function DebinScreen({ navigation }: any) {
             title="Request DEBIN" 
             onPress={handleDebin}
             style={styles.primaryButton}
+            testID="debin-submit"
           />
           <CustomButton
             title="Cancel"

@@ -90,6 +90,7 @@ export default function HomeScreen({ navigation }: any) {
                 variant="outline"
                 style={styles.gridButton}
                 size="medium"
+                testID="goto-debin"
               />
               <CustomButton
                 title="View History"
