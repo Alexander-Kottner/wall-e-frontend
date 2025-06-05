@@ -16,26 +16,33 @@ describe('User flows', () => {
     cy.get('[data-testid="logout-button"]').click();
   });
 
-  it('logs in', () => {
-    cy.wait(1000);
+  // Helper function for login
+  function login() {
+    cy.visit('/');
     cy.get('[data-testid="login-email"]').type(userEmail);
     cy.get('[data-testid="login-password"]').type(userPassword);
     cy.get('[data-testid="login-submit"]').click();
     cy.get('[data-testid="current-balance"]').should('be.visible');
-  });
+  }
 
-  it('views current balance', () => {
-    cy.get('[data-testid="current-balance"]').should('contain', '$');
-  });
+  describe('when logged in', () => {
+    beforeEach(() => {
+      login();
+    });
 
-  it('sends money to another user and checks transaction history', () => {
-    cy.get('[data-testid="goto-transfer"]').click();
-    cy.get('[data-testid="transfer-recipient"]').type(recipientEmail);
-    cy.get('[data-testid="transfer-amount"]').type('5');
-    cy.get('[data-testid="transfer-submit"]').click();
+    it('views current balance', () => {
+      cy.get('[data-testid="current-balance"]').should('contain', '$');
+    });
 
-    cy.get('[data-testid="goto-transactions"]').click();
-    cy.get('[data-testid="transactions-list"]').should('exist');
-    cy.get('[data-testid="transaction-item"]').its('length').should('be.greaterThan', 0);
+    it('sends money to another user and checks transaction history', () => {
+      cy.get('[data-testid="goto-transfer"]').click();
+      cy.get('[data-testid="transfer-recipient"]').type(recipientEmail);
+      cy.get('[data-testid="transfer-amount"]').type('5');
+      cy.get('[data-testid="transfer-submit"]').click();
+
+      cy.get('[data-testid="goto-transactions"]').click();
+      cy.get('[data-testid="transactions-list"]').should('exist');
+      cy.get('[data-testid="transaction-item"]').its('length').should('be.greaterThan', 0);
+    });
   });
 });
