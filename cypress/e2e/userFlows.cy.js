@@ -17,6 +17,7 @@ describe('User flows', () => {
   });
 
   it('logs in', () => {
+    cy.wait(1000);
     cy.get('[data-testid="login-email"]').type(userEmail);
     cy.get('[data-testid="login-password"]').type(userPassword);
     cy.get('[data-testid="login-submit"]').click();
