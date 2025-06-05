@@ -7,9 +7,10 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-
     "test:ios": "wdio run wdio.conf.ts",
-    "test:e2e": "cypress run --browser chrome --headless"
+    "test:e2e": "cross-env TS_NODE_PROJECT=cypress/tsconfig.json cypress run",
+    "cypress:open": "cross-env TS_NODE_PROJECT=cypress/tsconfig.json cypress open",
+    "cypress:open:isolated": "cross-env TS_NODE_PROJECT=cypress/tsconfig.json npx cypress open"
   },
   "dependencies": {
     "@expo-google-fonts/montserrat": "^0.3.0",
@@ -43,6 +44,7 @@
     "@wdio/mocha-framework": "^9.15.0",
     "@wdio/spec-reporter": "^9.15.0",
     "appium": "^2.19.0",
+    "cross-env": "^7.0.3",
     "cypress": "^13.17.0",
     "expect-webdriverio": "^5.2.1",
     "ts-node": "^10.9.2",

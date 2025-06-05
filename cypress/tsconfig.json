@@ -1,0 +1,14 @@
+{
+  // No extends para evitar heredar expo/tsconfig.base
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "moduleResolution": "node16",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": ["../src", "./**/*.ts", "./**/*.tsx", "./**/*.js"]
+}
