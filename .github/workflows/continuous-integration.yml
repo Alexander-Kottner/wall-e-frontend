@@ -1,0 +1,60 @@
+name: continuous integration
+
+on:
+  workflow_call:
+
+jobs:
+  e2e-tests:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prebuild iOS project
+        run: npx expo prebuild --platform ios --no-install
+
+      - name: Install CocoaPods
+        run: |
+          cd ios
+          pod install
+          cd ..
+      
+      - name: Build iOS App
+        run: |
+          npx xcodebuild -workspace ios/wallefrontend.xcworkspace -scheme wallefrontend -sdk iphonesimulator -derivedDataPath ios/build
+          
+      - name: Run Appium/WebdriverIO tests
+        run: |
+          APP_PATH="ios/build/Build/Products/Debug-iphonesimulator/wallefrontend.app" npm run test:ios
+
+  cypress-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Cypress E2E tests
+        run: |
+          CI=1 npm run web &
+          WEBSERVER_PID=$!
+          npx wait-on http://localhost:8081
+          npm run test:e2e
+          kill $WEBSERVER_PID
