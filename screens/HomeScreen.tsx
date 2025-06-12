@@ -54,6 +54,7 @@ export default function HomeScreen({ navigation }: any) {
     });
   }, [navigation, handleLogout]);
 
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       <View>
