@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+.expo/
+
+# Git
+.git/
+.github/
+
+# Testing
+cypress/
+e2e/
+
+# Environment
+.env
+
+# Mobile specific
+android/
+ios/
+
+# Docker
+Dockerfile
+nginx.conf 
