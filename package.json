@@ -9,9 +9,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test:ios": "wdio run wdio.conf.ts",
-    "test:e2e": "cross-env TS_NODE_PROJECT=cypress/tsconfig.json cypress run",
-    "cypress:open": "cross-env TS_NODE_PROJECT=cypress/tsconfig.json cypress open",
-    "cypress:open:isolated": "cross-env TS_NODE_PROJECT=cypress/tsconfig.json npx cypress open"
+    "test:e2e": "cross-env TS_NODE_PROJECT=cypress/tsconfig.json cypress run --browser chrome --headless",
+    "cypress:open": "cross-env TS_NODE_PROJECT=cypress/tsconfig.json cypress open --browser chrome",
+    "cypress:open:isolated": "cross-env TS_NODE_PROJECT=cypress/tsconfig.json npx cypress open --browser chrome"
   },
   "dependencies": {
     "@expo-google-fonts/montserrat": "^0.3.0",
